@@ -16,6 +16,19 @@ public:
   double Kp;
   double Ki;
   double Kd;
+    
+  double prev_cte;
+  double sum_cte;
+  
+  double dp[3];
+  double best_error;
+  bool increased;
+  
+  int i, k;
+  double tolerance;
+  bool twiddle_flag;
+  
+  int summed;
 
   /*
   * Constructor
@@ -36,6 +49,8 @@ public:
   * Update the PID error variables given cross track error.
   */
   void UpdateError(double cte);
+  
+  void Twiddle(double cte);
 
   /*
   * Calculate the total PID error.
